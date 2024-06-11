@@ -1,95 +1,63 @@
-const notesList = document.getElementById('notes-list');
-const noteForm = document.getElementById('note-form');
-const noteContent = document.getElementById('note-content');
-const newNoteBtn = document.getElementById('new-note-btn');
+// script.js
 
-// Function to load notes from JSON file (or database)
-function loadNotes() {
-    const existingNotes = JSON.parse(localStorage.getItem('notes')) || [];
-    existingNotes.forEach(note => {
-        const listItem = document.createElement('li');
-        const noteLink = document.createElement('a');
-        noteLink.textContent = note.title || 'Untitled Note'; // Use note.title if available
-        noteLink.href = `note.html?id=${note.id}`; // Pass note ID for editing
-        listItem.appendChild(noteLink);
-        notesList.appendChild(listItem);
+// GitHub API endpoint
+const apiEndpoint = 'https://api.github.com/repos/your-username/your-repo-name/contents/';
+
+// Function to fetch notes from GitHub repository
+async function fetchNotes() {
+  try {
+    const response = await fetch(apiEndpoint);
+    const data = await response.json();
+    const notesList = document.getElementById('notes-list');
+    notesList.innerHTML = '';
+    data.forEach(file => {
+      const noteLink = document.createElement('a');
+      noteLink.href = `notes.html?file=${file.name}`;
+      noteLink.textContent = file.name;
+      notesList.appendChild(noteLink);
     });
-}
-
-// Function to handle note creation (optional, consider server-side validation)
-function createNote() {
-    // Generate a unique ID (consider using a library like UUID.js)
-    const newNoteId = Math.random().toString(36).substring(2, 15); // Example approach
-
-    // Create a new note object with title (optional) and content
-    const newNote = {
-        id: newNoteId,
-        title: document.getElementById('note-title').value || '',
-        content: noteContent.value
-    };
-
-    // Add the new note to the existing data (modify for database)
-    const existingNotes = JSON.parse(localStorage.getItem('notes')) || [];
-    existingNotes.push(newNote);
-    localStorage.setItem('notes', JSON.stringify(existingNotes));
-
-    // Update displayed list
-    notesList.innerHTML = ''; // Clear existing notes
-    loadNotes();
-
-    // Redirect to note editing page with the new note ID
-    window.location.href = `note.html?id=${newNoteId}`;
-}
-
-// Function to handle note editing (optional, consider server-side validation)
-function handleNoteEdit(event) {
-    event.preventDefault();
-
-    const noteId = new URLSearchParams(window.location.search).get('id');
-
-    // Find the note to update (modify for database)
-    let updatedNotes = JSON.parse(localStorage.getItem('notes')) || [];
-    const noteIndex = updatedNotes.findIndex(note => note.id === noteId);
-
-    if (noteIndex !== -1) {
-        updatedNotes[noteIndex] = {
-            id: noteId,
-            title: document.getElementById('note-title').value || '',
-            content: noteContent.value
-        };
-
-        // Update data (modify for database)
-        localStorage.setItem('notes', JSON.stringify(updatedNotes));
-    }
-
-    // Clear form after saving
-    noteForm.reset();
-
-    // Optional: Redirect back to homepage or display success message
-    // window.location.href = 'index.html';
-    alert('Note saved successfully!');
-}
-
-// Event listener for creating a new note
-newNoteBtn.addEventListener('click', createNote);
-
-// Event listener for submitting the note form (saving)
-noteForm.addEventListener('submit', handleNoteEdit);
-
-// Call loadNotes function on page load to fetch saved notes
-window.onload = loadNotes;
-
-// Function to open a note in a new window (optional)
-function openNoteInNewWindow(noteId) {
-  // Consider using window.open with appropriate options for new window behavior
-  window.open(`note.html?id=${noteId}`, '_blank');
-}
-
-// Add event listener to note links (optional)
-notesList.addEventListener('click', (event) => {
-  if (event.target.tagName === 'A') {
-    const noteId = event.target.href.split('?id=')[1];
-    // Open the note in a new window (uncomment the following line)
-    // openNoteInNewWindow(noteId);
+  } catch (error) {
+    console.error(error);
   }
+}
+
+// Function to save note to GitHub repository
+async function saveNote(fileContent, fileName) {
+  try {
+    const response = await fetch(`${apiEndpoint}${fileName}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer YOUR_GITHUB_TOKEN',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Create new note',
+        content: btoa(fileContent),
+        branch: 'ain'
+      })
+    });
+    const data = await response.json();
+    console.log(`Note saved: ${fileName}`);
+    window.location.href = 'index.html';
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Add event listener to create note button
+document.addEventListener('DOMContentLoaded', () => {
+  const createNoteButton = document.querySelector('a[href="notes.html"]');
+  createNoteButton.addEventListener('click', () => {
+    fetchNotes();
+  });
+});
+
+// Add event listener to save note button
+document.addEventListener('DOMContentLoaded', () => {
+  const saveNoteButton = document.querySelector('button[type="submit"]');
+  saveNoteButton.addEventListener('click', () => {
+    const noteTitle = document.getElementById('note-title').value;
+    const noteContent = document.getElementById('note-content').value;
+    saveNote(noteContent, noteTitle);
+  });
 });
