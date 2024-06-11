@@ -33,3 +33,31 @@ h2 {
   to { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
 }
 
+/* Option 1: Centering using margin: auto (remove the styles for option 2) */
+.slide {
+  margin: auto;
+  width: 300px; /* Adjust width as needed */
+  border: 1px solid #ddd; /* Optional border for visibility */
+  padding: 10px; /* Optional padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Option 2: Centering using Flexbox (remove the styles for option 1) */
+.slides-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: Vertically centers content within slides */
+}
+
+.slide {
+  width: 300px; /* Adjust width as needed */
+  border: 1px solid #ddd; /* Optional border for visibility */
+  padding: 10px; /* Optional padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1 {
+  text-align: center; /* Center the website title */
+}
+
+/* Add other styles for your website elements here... */
