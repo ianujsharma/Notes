@@ -47,11 +47,39 @@
             margin-top: 0;
         }
 
-        /* Individual quote styling (can be further customized) */
+        /* Styling for Programming and Finance divs */
+        .programming,
+        .finance {
+            display: inline-block;
+            width: 45%;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out; /* Animation for hover effect */
+        }
+
+        .programming {
+            background-color: #3498db; /* Adjust color as desired */
+            color: white;
+        }
+
+        .finance {
+            background-color: #f1c40f; /* Adjust color as desired */
+            color: black;
+        }
+
+        .programming:hover,
+        .finance:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* Individual quote styling */
         .quote {
             margin-bottom: 15px;
-            border-left: 5px solid #ddd;
-            padding-left: 10px;
+            opacity: 0; /* Initial opacity for fade-in animation */
+            transition: opacity 0.5s ease-in-out; /* Animation for scrolling */
         }
 
         .quote h2 {
@@ -69,8 +97,8 @@
     </header>
 
     <nav class="navigation">
-        <a href="programming.html">Programming</a>
-        <a href="finance.html">Finance</a>
+        <div class="programming">Programming</div>
+        <div class="finance">Finance</div>
     </nav>
 
     <main class="content">
@@ -97,5 +125,8 @@
         </div>
     </main>
 
+    <script>
+        // Add JavaScript here if needed for further interactivity
+    </script>
 </body>
 </html>
