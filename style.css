@@ -1,3 +1,97 @@
-/* Additional CSS for quote animations */
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("path/to/your/background_image.jpg"); /* Replace with your image path */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Header */
+.header {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0; /* Remove default margin for heading */
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #e0e0e0;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Content */
+.content {
+  padding: 20px;
+  max-width: 800px; /* Limit content area width for mobile */
+  margin: 0 auto; /* Center content horizontally */
+  background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .journal {
-    position: relative; /* Required for :in-view pseudo-class
+  padding: 20px;
+}
+
+.journal h2 {
+  margin-top: 0;
+}
+
+/* Programming and Finance sections */
+.programming,
+.finance {
+  display: inline-block;
+  width: 48%; /* Adjust width as desired */
+  margin: 15px;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.programming {
+  background-color: #3498db; /* Adjust color as desired */
+}
+
+.finance {
+  background-color: #f1c40f; /* Adjust color as desired */
+}
+
+.programming:hover,
+.finance:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
+}
+
+/* Quotes */
+.quote {
+  margin-bottom: 15px;
+  opacity: 0; /* Initial opacity for fade-in animation */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.quote h2 {
+  font-style: italic;
+}
+
+.quote p {
+  font-size: 16px;
+  line-height: 1.5; /* Adjust line height for better readability */
+}
