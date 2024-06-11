@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anuj Sharma | Finance & Programming</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        /* Basic styling for a clean layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #e0e0e0;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .journal {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+            overflow-y: auto; /* Enable scrolling for the journal content */
+            max-height: 300px; /* Set a maximum height to avoid excessive scrolling on mobile devices */
+        }
+
+        .journal h2 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-  </header>
+    <header class="header">
+        <h1>Your Website Title</h1>
+    </header>
 
-  <section class="slides">
-    <div class="slide" id="finance" style="width: 300px;">  <h2>Finance</h2>
-      <p>Explore my work in Finance...</p>
-      <a href="finance.html">Learn More</a>
-    </div>
-    <div class="slide" id="programming" style="width: 300px;"> <h2>Programming</h2>
-      <p>Discover my Programming Skills...</p>
-      <a href="programming.html">Learn More</a>
-    </div>
-  </section>
+    <nav class="navigation">
+        <a href="programming.html">Programming</a>
+        <a href="finance.html">Finance</a>
+    </nav>
 
-  <main>
-    <section class="diary">
-      <h2>Journal</h2>
-      <p>Welcome to my Journal! Here you'll find blog posts about...</p>
-    </section>
-  </main>
+    <main class="content">
+        <h2>My Journal</h2>
 
-  <footer>
-    <p>&copy; 2024 Your Name</p>
-  </footer>
+        <div class="journal">
+            <h2>Story 1</h2>
+            <p>Write your first story here.</p>
+
+            <h2>Quote</h2>
+            <blockquote>"Your inspirational quote here." - Your Name</blockquote>
+
+            </div>
+    </main>
+
 </body>
 </html>
