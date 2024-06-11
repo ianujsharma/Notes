@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Note</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <h1>Edit Note</h1>
-    <form id="note-form">
-        <textarea id="note-content" rows="10" placeholder="Write your note here..."></textarea>
-        <button type="submit">Save</button>
-    </form>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>Edit Note</h1>
+        <form id="note-form">
+            <input type="text" id="note-title" placeholder="Enter note title (optional)">
+            <textarea id="note-content" rows="10" placeholder="Write your note here..."></textarea>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    <script src="static/script.js"></script>
 </body>
 </html>
