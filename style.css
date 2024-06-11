@@ -1,57 +1,54 @@
 body {
-    font-family: sans-serif;
-    margin: 0;  /* Remove default body margin */
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
 .container {
-    max-width: 800px;  /* Set a maximum width for the container */
-    margin: 20px auto;  /* Center the container horizontally */
-    padding: 20px;  /* Add some padding for better spacing */
-    border: 1px solid #ddd;  /* Add a subtle border */
-    border-radius: 5px;  /* Add rounded corners for a nicer look */
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    margin-bottom: 15px;
+.navbar {
+  background-color: #333;
+  color: #fff;
 }
 
-ul#notes-list {
-    list-style: none;
-    padding: 0;
+.navbar-brand {
+  font-weight: bold;
 }
 
-ul#notes-list li {
-    margin-bottom: 10px;
+.nav-link {
+  color: #fff;
 }
 
-ul#notes-list li a {
-    text-decoration: none;
-    color: black;
+.nav-link:hover {
+  color: #ccc;
 }
 
-#note-form {
-    display: flex;  /* Align form elements horizontally */
-    flex-direction: column;  /* Stack them vertically */
-    margin-top: 20px;  /* Add some space above the form */
+#notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-#note-form input, #note-form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;  /* Make form elements fill the container */
+#notes-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-#note-content {
-    font-family: monospace;  /* Use a monospaced font for code or notes */
+#notes-list li:last-child {
+  border-bottom: none;
 }
 
-#new-note-btn {
-    background-color: #4CAF50;  /* Green color for the button */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;  /* Indicate the button is clickable */
+#notes-list a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+#notes-list a:hover {
+  color: #23527c;
 }
