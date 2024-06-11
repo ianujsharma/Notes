@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Anuj Sharma | Finance & Programming</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
   <header>
@@ -33,6 +31,24 @@
   <footer>
     <p>&copy; 2024 Your Name</p>
   </footer>
-  <script src="script.js"></script> 
+  <div id="particles-js"></div>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 50,
+          density: {
+            enable: true,
+            value_area: 800, // Adjust for screen size
+          }
+        },
+        color: {
+          value: '#fff' // White particles
+        },
+        // ... other animation configuration options ...
+      },
+      // ... other particles.js configuration options ...
+    });
+  </script>
 </body>
 </html>
