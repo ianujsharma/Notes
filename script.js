@@ -33,9 +33,12 @@ function createNote() {
     existingNotes.push(newNote);
     localStorage.setItem('notes', JSON.stringify(existingNotes));
 
-    // Update displayed list after adding a new note
-    notesList.innerHTML = ''; // Clear existing notes before re-rendering
+    // Update displayed list
+    notesList.innerHTML = ''; // Clear existing notes
     loadNotes();
+
+    // Redirect to note editing page with the new note ID
+    window.location.href = `note.html?id=${newNoteId}`;
 }
 
 // Function to handle note editing (optional, consider server-side validation)
@@ -62,15 +65,31 @@ function handleNoteEdit(event) {
     // Clear form after saving
     noteForm.reset();
 
-    // Redirect back to homepage (optional)
-    window.location.href = 'index.html';
+    // Optional: Redirect back to homepage or display success message
+    // window.location.href = 'index.html';
+    alert('Note saved successfully!');
 }
+
+// Event listener for creating a new note
+newNoteBtn.addEventListener('click', createNote);
+
+// Event listener for submitting the note form (saving)
+noteForm.addEventListener('submit', handleNoteEdit);
 
 // Call loadNotes function on page load to fetch saved notes
 window.onload = loadNotes;
 
-// Add event listener for creating a new note
-newNoteBtn.addEventListener('click', createNote);
+// Function to open a note in a new window (optional)
+function openNoteInNewWindow(noteId) {
+  // Consider using window.open with appropriate options for new window behavior
+  window.open(`note.html?id=${noteId}`, '_blank');
+}
 
-// Add event listener for note editing
-noteForm.addEventListener('submit', handleNoteEdit);
+// Add event listener to note links (optional)
+notesList.addEventListener('click', (event) => {
+  if (event.target.tagName === 'A') {
+    const noteId = event.target.href.split('?id=')[1];
+    // Open the note in a new window (uncomment the following line)
+    // openNoteInNewWindow(noteId);
+  }
+});
